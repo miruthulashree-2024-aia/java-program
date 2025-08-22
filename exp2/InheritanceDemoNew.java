@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Appliance {
     void plugIn() {
         System.out.println("Appliance is plugged in.");
@@ -18,18 +20,28 @@ class Blender extends KitchenAppliance {
 
 public class InheritanceDemoNew {
     public static void main(String[] args) {
-        
-        System.out.println("Single Inheritance Example :");
-        KitchenAppliance kitchenApp = new KitchenAppliance();
-        kitchenApp.plugIn();   
-        kitchenApp.function(); 
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Choose an appliance:");
+        System.out.println("1. Kitchen Appliance");
+        System.out.println("2. Blender");
+        System.out.print("Enter your choice: ");
+        int choice = scanner.nextInt();
+
+        if (choice == 1) {
+            KitchenAppliance kitchenApp = new KitchenAppliance();
+            kitchenApp.plugIn();
+            kitchenApp.function();
+        } else if (choice == 2) {
+            Blender blender = new Blender();
+            blender.plugIn();
+            blender.function();
+            blender.blend();
+        } else {
+            System.out.println("Invalid choice.");
+        }
         
-        System.out.println("\nMultilevel Inheritance Example :");
-        Blender blender = new Blender();
-        blender.plugIn();  
-        blender.function(); 
-        blender.blend();   
+        scanner.close();
     }
 }
 
